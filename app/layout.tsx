@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Navbar from "../components/Navbar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,7 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        {/* Emelents cannot be wider than 1440px */}
+        <Navbar />
+        <main className="max-w-[1440px] mx-auto">{children}</main>
+      </body>
     </html>
   );
 }
