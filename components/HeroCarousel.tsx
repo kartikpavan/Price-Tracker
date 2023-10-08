@@ -14,12 +14,12 @@ const HeroCarousel = () => {
   return (
     <div className="relative sm:px-10 py-5 sm:pt-20 max-w-[560px] h-[700px] rounded-[30px] w-full bg-gray-300 sm:mx-auto flex items-center justify-center">
       <Carousel
-        autoPlay={true}
+        // autoPlay={true}
         showThumbs={false}
         infiniteLoop={true}
         showStatus={false}
         showArrows={false}
-        interval={2000}
+        // interval={2000}
       >
         {heroImages.map((image, idx) => {
           return (

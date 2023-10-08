@@ -5,7 +5,7 @@ import { BiRightArrowAlt } from "react-icons/bi";
 export default function Home() {
   return (
     <>
-      <section className="px-6 py-24 md:px-20 border-2 border-red-500">
+      <section className="px-6 py-24 md:px-20 border-2 max-10xl:border-none border-green-500 rounded-[20px]">
         <div className="flex max-10xl:flex-col gap-16">
           <div className="flex flex-col justify-center">
             <div className="flex items-center gap-2">
