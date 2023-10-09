@@ -28,7 +28,6 @@ export async function scrapeAndStoreProducts(productURL: string) {
         ...existingProduct.priceHistory,
         { price: scrapeProduct.currentPrice },
       ];
-      console.log(updatedPriceHistory);
       product = {
         ...scrapeProduct,
         priceHistory: updatedPriceHistory,
@@ -50,5 +49,27 @@ export async function scrapeAndStoreProducts(productURL: string) {
   } catch (error) {
     if (error instanceof Error)
       throw new Error(`Failed to create/update Product: ${error.message}`);
+  }
+}
+
+export async function getProductById(productID: string) {
+  try {
+    connectToDb();
+    const product = await Product.findOne({ _id: productID });
+    if (!product) return null;
+    return product;
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+  }
+}
+
+export async function getAllProducts() {
+  try {
+    connectToDb();
+    const productList = await Product.find();
+    if (!productList) return null;
+    return productList;
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
   }
 }
