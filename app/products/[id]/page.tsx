@@ -15,6 +15,7 @@ import { BiBookmark, BiMessageDetail } from "react-icons/bi";
 import { ImPriceTags } from "react-icons/im";
 import { FcLowPriority, FcHighPriority } from "react-icons/fc";
 import SimilarProducts from "@/components/SimilarProducts";
+import Modal from "@/components/Modal";
 const ProductDetailPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const product = await getProductById(id);
@@ -126,7 +127,7 @@ const ProductDetailPage = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           {/* Modal for Tracking the product */}
-          MODAL
+          <Modal productId={id} />
         </div>
       </div>
       <div className="flex flex-col gap-16 w-full">
