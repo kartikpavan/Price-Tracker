@@ -10,7 +10,7 @@ const iconData = [
 
 const Navbar = () => {
   return (
-    <nav className="w-full">
+    <nav className="sm:w-[90%] mx-auto">
       <div className="flex items-center justify-between px-6 py-4 md:px-20">
         <Link href="/" className="flex items-center gap-1">
           <Image src={"/assets/logo.png"} alt="Logo" width={27} height={27} />

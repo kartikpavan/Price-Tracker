@@ -8,15 +8,15 @@ export default async function Home() {
   const allProducts = await getAllProducts(); // server action
   return (
     <>
-      <section className="px-6 py-24 md:px-20 border-2 max-10xl:border-none border-green-500 rounded-[20px]">
+      <section className="px-6 py-24 md:px-20 rounded-[20px]">
         <div className="flex max-10xl:flex-col gap-16">
           <div className="flex flex-col justify-center">
             <div className="flex items-center gap-2">
               <p className="text-primary-focus">Smart Shopping Starts here</p>
               <BiRightArrowAlt />
             </div>
-            <h1 className="text-6xl py-8 font-semibold">
-              <span className="text-primary-focus">PriceTracker : </span>
+            <h1 className="text-5xl py-8 font-semibold">
+              <span className="text-primary-focus">PriceTracker :</span>
               Track Prices with Precision
             </h1>
             <p className="text-gray-500 leading-8 tracking-wide">
@@ -30,7 +30,7 @@ export default async function Home() {
           <HeroCarousel />
         </div>
       </section>
-      <section className="px-6 py-24">
+      <section className="px-6 py-4">
         <h2 className="text-4xl font-semibold">Trending</h2>
         {/* Product LIST */}
         <div className="flex flex-wrap gap-x-8 gap-y-16 py-10 items-center justify-center">
