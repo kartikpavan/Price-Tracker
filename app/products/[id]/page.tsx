@@ -16,14 +16,15 @@ import { ImPriceTags } from "react-icons/im";
 import { FcLowPriority, FcHighPriority } from "react-icons/fc";
 import SimilarProducts from "@/components/SimilarProducts";
 import Modal from "@/components/Modal";
+import CopyToClipboard from "@/components/CopyToClipboard";
+import AddToFavorites from "@/components/AddToFavorites";
+
 const ProductDetailPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const product = await getProductById(id);
   const similarProducts = await getSimilarProducts(id);
 
   if (!product) redirect("/");
-
-  console.log(product);
 
   return (
     <div className="flex flex-col gap-16 flex-wrap px-6 md:px-20 py-24 w-full">
@@ -60,12 +61,8 @@ const ProductDetailPage = async ({ params }: { params: { id: string } }) => {
                 <p className="text-primary">100</p>
               </div>
               {/* Wishlist product */}
-              <div className="px-3 py-1 bg-base-200 rounded-lg">
-                <BiBookmark className="text-xl" />
-              </div>
-              <div className="px-3 py-1 bg-base-200 rounded-lg">
-                <AiOutlineShareAlt className="text-xl" />
-              </div>
+              <AddToFavorites />
+              <CopyToClipboard />
             </div>
           </div>
           {/* Product Info */}
@@ -132,10 +129,14 @@ const ProductDetailPage = async ({ params }: { params: { id: string } }) => {
       </div>
       <div className="flex flex-col gap-16 w-full">
         {/* Buy Now Button */}
-        <div className="w-full max-w-sm mx-auto btn btn-outline">
+        <Link
+          href={product?.url}
+          target="_blank"
+          className="w-full max-w-sm mx-auto btn btn-outline"
+        >
           <AiOutlineShoppingCart className="text-lg" />
           Buy Now
-        </div>
+        </Link>
         {/* Similar Products */}
         {similarProducts && similarProducts?.length > 0 && (
           <SimilarProducts productId={id} />

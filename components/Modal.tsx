@@ -3,6 +3,13 @@ import { addUserEmailToAssociatedProduct } from "@/lib/actions";
 import Image from "next/image";
 import React, { useState } from "react";
 import { AiOutlineCloseCircle, AiOutlineMail } from "react-icons/ai";
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = () =>
+  toast.success("Email sent successfully", {
+    duration: 4000,
+    position: "top-center",
+  });
 
 const Modal = ({ productId }: { productId: string }) => {
   const [email, setEmail] = useState<string>("");
@@ -16,6 +23,7 @@ const Modal = ({ productId }: { productId: string }) => {
       await addUserEmailToAssociatedProduct(productId, email);
       setIsloading(false);
       setEmail("");
+      notify();
       // @ts-ignore
       document.getElementById("my_modal_2").close();
     } catch (error) {
@@ -38,6 +46,7 @@ const Modal = ({ productId }: { productId: string }) => {
       >
         Notify Me
       </button>
+
       <dialog id="my_modal_2" className="modal">
         <div className="modal-box">
           {/* Header */}
@@ -107,6 +116,7 @@ const Modal = ({ productId }: { productId: string }) => {
           <button>close</button>
         </form>
       </dialog>
+      <Toaster />
     </>
   );
 };

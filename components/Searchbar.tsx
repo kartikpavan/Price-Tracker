@@ -35,7 +35,11 @@ const Searchbar = () => {
     try {
       setIsLoading(true);
       // Scrape the product page
-      const product = await scrapeAndStoreProducts(searchTerm);
+      await scrapeAndStoreProducts(searchTerm);
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
